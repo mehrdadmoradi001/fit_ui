@@ -1,4 +1,4 @@
-`# fit_ui
+# fit_ui
 
 A powerful, intuitive, and flexible Flutter package for creating responsive and adaptive UIs that look great on any screen size.
 
