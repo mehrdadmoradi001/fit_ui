@@ -1,39 +1,90 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+`# fit_ui
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
+A powerful, intuitive, and flexible Flutter package for creating responsive and adaptive UIs that look great on any screen size.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
+Features
+Component-Level Responsiveness: Adapts to local layout constraints, not just the screen size, making your widgets truly modular.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Declarative API: Define responsive values for padding, font sizes, and more with the clean ResponsiveValue class.
 
-## Features
+Structural Layout Widgets: Easily switch between different layouts for mobile, tablet, and desktop using ResponsiveLayout.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+State Preservation: Maintain widget state across layout changes with AdaptiveIndexedStack.
 
-## Getting started
+Slot-Based Layouts: Build complex, adaptive UIs with a simple slot system using ResponsiveSlots.
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Customizable Breakpoints: Use the default breakpoints or provide your own for full control.
+
+Getting Started
+Add fit_ui to your pubspec.yaml dependencies:yaml
+dependencies:
+fit_ui: ^1.0.0 # Use the latest version
+
+
+Then, run `flutter pub get`.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+The core of `fit_ui` is making decisions based on available width. You can do this for values or for entire widgets.
+
+### Responsive Values
+
+Use `LayoutBuilder` and the `.value()` extension on `BoxConstraints` to select a value that adapts to the available width. This is perfect for things like column counts, padding, or font sizes.
 
 ```dart
-const like = 'sample';
-```
+import 'package:fit_ui/responsive_ui.dart';
+import 'package:flutter/material.dart';
 
-## Additional information
+class MyResponsiveGrid extends StatelessWidget {
+  const MyResponsiveGrid({super.key});
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Define a responsive value for the number of columns.
+        final columnCount = constraints.value(
+          const ResponsiveValue(2, tablet: 4, desktop: 6),
+        );
+
+        return GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: columnCount,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+          ),
+          itemBuilder: (context, index) => Container(
+            color: Colors.blue,
+            child: Center(child: Text('Item $index')),
+          ),
+        );
+      },
+    );
+  }
+}
+Responsive Layouts
+For larger structural changes, use the ResponsiveLayout widget to provide different widgets for mobile, tablet, and desktop sizes.
+
+Dart
+
+import 'package:fit_ui/responsive_ui.dart';
+import 'package:flutter/material.dart';
+
+class MyPageLayout extends StatelessWidget {
+  const MyPageLayout({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const ResponsiveLayout(
+      mobile: MobileView(), // Your widget for mobile
+      tablet: TabletView(), // Your widget for tablet
+      desktop: DesktopView(), // Your widget for desktop
+    );
+  }
+}
+Contributing
+Contributions are welcome! Please see the CONTRIBUTING.md file for guidelines.
+
+License
+This project is licensed under the BSD 3-Clause License - see the LICENSE file for details.
+
