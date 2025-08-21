@@ -1,7 +1,9 @@
 name: fit_ui
-description: "FitUI — The unified responsive formula for Flutter"
+description: A powerful and intuitive Flutter package for creating responsive and adaptive UIs. Build component-level responsive layouts with ease.
 version: 1.0.0
-homepage:
+homepage: https://github.com/mehrdadmoradi001/fit_ui
+repository: https://github.com/mehrdadmoradi001/fit_ui
+issue_tracker: https://github.com/mehrdadmoradi001/fit_ui/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -17,4 +19,10 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 
-flutter:
+# The topics are used by pub.dev to categorize your package and make it more discoverable.
+topics:
+  - responsive
+  - adaptive
+  - layout
+  - flutter-ui
+  - breakpoint
