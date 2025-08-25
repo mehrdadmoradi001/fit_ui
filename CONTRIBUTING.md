@@ -1,4 +1,4 @@
-# Contributing to fit_ui
+# Contributing to `fit_ui`
 
 Thank you for your interest in contributing to fit_ui! We welcome contributions from everyone.
 
