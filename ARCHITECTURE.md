@@ -1,4 +1,4 @@
-# Architecture of fit_ui`
+# Architecture of fit_ui
 
 This document provides a deep dive into the architecture, code structure, and design principles behind the fit_ui package.
 
