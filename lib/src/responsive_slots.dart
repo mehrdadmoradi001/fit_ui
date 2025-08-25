@@ -22,6 +22,14 @@ class ResponsiveSlots extends StatelessWidget {
   /// Optional custom breakpoint provider
   final BreakpointProvider? breakpointProvider;
 
+  /// The horizontal spacing between the body and side slots on desktop.
+  /// Defaults to 16.0.
+  final double desktopSideSpacing;
+
+  /// The vertical spacing between the body and side slots on tablet.
+  /// Defaults to 12.0.
+  final double tabletSideSpacing;
+
   /// Creates a [ResponsiveSlots] widget
   const ResponsiveSlots({
     super.key,
@@ -29,6 +37,8 @@ class ResponsiveSlots extends StatelessWidget {
     required this.body,
     this.side,
     this.breakpointProvider,
+    this.desktopSideSpacing = 16.0, // Default value
+    this.tabletSideSpacing = 12.0, // Default value
   });
 
   @override
@@ -51,7 +61,7 @@ class ResponsiveSlots extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(width: 16),
+            SizedBox(width: desktopSideSpacing),
             Expanded(
               flex: 1,
               child: sideWidget,
@@ -66,7 +76,7 @@ class ResponsiveSlots extends StatelessWidget {
           header(screenType),
           Expanded(child: body(screenType)),
           if (sideWidget != null && screenType == DeviceScreenType.tablet)
-            const SizedBox(height: 12),
+            SizedBox(height: tabletSideSpacing),
           if (sideWidget != null && screenType != DeviceScreenType.desktop)
             sideWidget,
         ],

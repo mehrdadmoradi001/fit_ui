@@ -2,7 +2,6 @@
 import 'package:flutter/widgets.dart';
 import 'breakpoints.dart';
 import 'device_screen_type.dart';
-import 'extensions/box_constraints_ext.dart';
 
 /// {@template responsive_ui.responsive_layout}
 /// A widget that selects a layout based on the available screen width.
@@ -48,9 +47,8 @@ class ResponsiveLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final DeviceScreenType screenType = breakpointProvider != null
-            ? constraints.screenTypeUsing(breakpointProvider!)
-            : constraints.screenType;
+        final provider = breakpointProvider?? const DefaultBreakpointProvider();
+        final screenType = provider.getScreenType(constraints.maxWidth);
 
         switch (screenType) {
           case DeviceScreenType.desktop:

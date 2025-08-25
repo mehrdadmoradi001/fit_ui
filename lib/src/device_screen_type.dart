@@ -18,12 +18,12 @@ enum DeviceScreenType {
 
 /// Extension methods for [DeviceScreenType]
 extension DeviceScreenTypeX on DeviceScreenType {
-  /// Returns true if the screen type is mobile
+  /// Returns `true` if the screen type is mobile
   bool get isMobile => this == DeviceScreenType.mobile;
 
-  /// Returns true if the screen type is tablet
+  /// Returns `true` if the screen type is tablet
   bool get isTablet => this == DeviceScreenType.tablet;
 
-  /// Returns true if the screen type is desktop
+  /// Returns `true` if the screen type is desktop
   bool get isDesktop => this == DeviceScreenType.desktop;
 }

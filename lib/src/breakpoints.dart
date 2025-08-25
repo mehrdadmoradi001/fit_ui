@@ -1,5 +1,5 @@
 // FILE: lib/src/breakpoints.dart
-import '../fit_ui.dart';
+import 'device_screen_type.dart';
 
 /// {@template responsive_ui.breakpoints}
 /// Defines the standard breakpoints for different screen sizes.

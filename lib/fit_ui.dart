@@ -1,3 +1,5 @@
+library;
+
 // Export Core Abstractions components for the public API.
 export 'src/breakpoints.dart';
 export 'src/device_screen_type.dart';
