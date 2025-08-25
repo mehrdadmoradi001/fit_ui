@@ -21,15 +21,21 @@ A **powerful, intuitive, and flexible Flutter package** for creating responsive 
 
 ## 🚀 Getting Started
 
+###  🛠 Installation
+
 Add `fit_ui` to your `pubspec.yaml` dependencies:
 
-```yaml
+```bash
 dependencies:
   fit_ui: ^1.0.0 # Use the latest version
 ```
-Then, run:
+Then, run the following command in your terminal:
 ```yaml
 flutter pub get
+```
+Now you can import the package in your Dart code:
+```dart
+import 'package:fit_ui/fit_ui.dart';
 ```
 
 ## 📖 Usage
@@ -157,6 +163,125 @@ class MyResponsivePageWithBuilder extends StatelessWidget {
 
 ```
 
+### 🔹 Slot-Based Layouts
+For more complex UIs, `ResponsiveSlots` provides a structured way to rearrange content. The layout automatically adapts, moving the side content in a `Row` on desktop and a `Column` on smaller screens
+
+```dart
+import 'package:fit_ui/responsive_ui.dart';
+import 'package:flutter/material.dart';
+
+class MyDashboard extends StatelessWidget {
+  const MyDashboard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ResponsiveSlots(
+        // You can easily customize the spacing for different layouts!
+        desktopSideSpacing: 24.0,
+        tabletSideSpacing: 16.0,
+        header: (screenType) => Container(
+          height: 60,
+          color: Colors.blueGrey,
+          child: const Center(child: Text('Header')),
+        ),
+        body: (screenType) => Container(
+          color: Colors.white,
+          child: const Center(child: Text('Main Body Content')),
+        ),
+        side: (screenType) => Container(
+          color: Colors.grey.shade200,
+          child: const Center(child: Text('Side Panel')),
+        ),
+      ),
+    );
+  }
+}
+
+```
+
+### 🔹 Complex Example: Responsive Product Page
+
+Here's a more complex example showing how to use `fit_ui` in a real-world scenario:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:fit_ui/fit_ui.dart';
+
+class ProductPage extends StatelessWidget {
+  const ProductPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Product Details'),
+      ),
+      body: ResponsiveLayoutBuilder(
+        builder: (screenType, constraints) {
+          final padding = constraints.value(
+            const ResponsiveValue(16.0, tablet: 24.0, desktop: 32.0),
+          );
+          final imageSize = constraints.value(
+            const ResponsiveValue(150.0, tablet: 200.0, desktop: 250.0),
+          );
+
+          return Padding(
+            padding: EdgeInsets.all(padding),
+            child: screenType == DeviceScreenType.desktop
+                ? _buildDesktopLayout(imageSize)
+                : _buildMobileTabletLayout(imageSize),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildDesktopLayout(double imageSize) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 2,
+          child: Image.asset('assets/product.jpg', width: imageSize, height: imageSize),
+        ),
+        const SizedBox(width: 24),
+        Expanded(
+          flex: 3,
+          child: _buildProductDetails(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMobileTabletLayout(double imageSize) {
+    return Column(
+      children: [
+        Image.asset('assets/product.jpg', width: imageSize, height: imageSize),
+        const SizedBox(height: 16),
+        _buildProductDetails(),
+      ],
+    );
+  }
+
+  Widget _buildProductDetails() {
+    return const Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Product Name', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        SizedBox(height: 8),
+        Text('Product description goes here...'),
+        SizedBox(height: 16),
+        Text('\$99.99', style: TextStyle(fontSize: 20, color: Colors.green)),
+        SizedBox(height: 16),
+        ElevatedButton(onPressed: null, child: Text('Add to Cart')),
+      ],
+    );
+  }
+}
+
+```
+
 ## 
 
 ### 🧪 Testing
@@ -169,12 +294,49 @@ flutter test
 ##
 
 ### 🤝 Contributing
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+We welcome contributions! Please feel free to:
+
+- 🐛 Report bugs by [creating an issue](https://github.com/mehrdadmoradi001/fit_ui/issues/new)
+- 💡 Suggest new features by [opening a discussion](https://github.com/mehrdadmoradi001/fit_ui/discussions)
+- 🔧 Submit pull requests for bug fixes or new features
+
+Before contributing, please read our [Contributing Guidelines](CONTRIBUTING.md).
 
 ##
 
 ### 📜 License
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
+
+##
+
+### ❓ FAQ
+
+### Q: Why should I use fit_ui instead of other responsive packages?
+A: fit_ui focuses on component-level responsiveness using constraints rather than screen size, making your components truly reusable in any context.
+
+### Q: Can I use custom breakpoints?
+A: Yes! Simply implement the `BreakpointProvider` interface and pass it to any responsive widget.
+
+### Q: Does this work with existing state management solutions?
+A: Absolutely! fit_ui works seamlessly with all state management approaches (Provider, Bloc, Riverpod, etc.).
+
+##
+
+### 💬 Support
+
+If you have any questions or need help:
+- Check the [API documentation](https://pub.dev/documentation/fit_ui/latest/)
+- Look at the [example app](https://github.com/mehrdadmoradi001/fit_ui/tree/main/example)
+- [Open an issue](https://github.com/mehrdadmoradi001/fit_ui/issues) for bugs or feature requests
+
+##
+
+### ⭐ Star History
+
+If you find this package useful, please consider giving it a star on GitHub!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mehrdadmoradi001/fit_ui&type=Date)](https://star-history.com/#mehrdadmoradi001/fit_ui&Date)
 
 ##
 
