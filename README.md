@@ -293,6 +293,17 @@ flutter test
 
 ##
 
+### 🏛️ Architectural Philosophy
+`fit_ui` is built on a simple yet powerful principle: component-level responsiveness.
+
+Instead of making decisions based on the global screen size, every widget adapts to the local constraints provided by its parent. This ensures that your components are truly modular, reusable, and predictable, no matter where you place them in the widget tree.
+
+This approach is achieved by leveraging Flutter's built-in `LayoutBuilder` and providing a clean, declarative API around it.
+
+For a deeper dive into the code structure and design principles, please see our [Architecture Guide](ARCHITECTURE.md).
+
+##
+
 ### 🤝 Contributing
 
 We welcome contributions! Please feel free to:
