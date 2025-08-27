@@ -1,4 +1,4 @@
-# Contributing to `fit_ui`
+_# Contributing to `fit_ui`
 
 Thank you for your interest in contributing to fit_ui! We welcome contributions from everyone.
 
@@ -60,4 +60,4 @@ Be respectful and considerate of others when contributing to this project. We ai
 
 If you have any questions about contributing, please open an issue or contact the maintainers.
 
-Thank you for contributing to fit_ui! 🚀
+Thank you for contributing to fit_ui! 🚀_
