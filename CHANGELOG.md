@@ -1,3 +1,18 @@
-## 0.0.1
+## 1.0.0
+* Initial stable release of the `fit_ui` package.
 
-* TODO: Describe initial release.
+* Provides a powerful, component-level approach to building responsive and adaptive UIs in Flutter.
+
+* Core features include:
+
+    * `ResponsiveLayout`: For major structural changes across mobile, tablet, and desktop.
+
+    * `ResponsiveValue`: A declarative way to manage responsive values like padding, font sizes, etc.
+
+    * `ResponsiveLayoutBuilder`: A flexible builder for custom responsive logic.
+
+    * `ResponsiveSlots`: A slot-based system for complex, adaptive layouts.
+
+    * `AdaptiveIndexedStack`: For preserving state across screen size changes.
+
+    * Customizable breakpoints via `BreakpointProvider`.
