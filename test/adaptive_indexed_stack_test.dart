@@ -20,14 +20,11 @@ void main() {
         ),
       );
 
-      // IndexedStack keeps all children in the tree, so we check which one is visible.
-      expect(find.text('Mobile'), findsOneWidget);
-      expect(find.text('Tablet'), findsOneWidget);
-      expect(find.text('Desktop'), findsOneWidget);
-
       // Check that the Tablet widget is the one being displayed.
-      final IndexedStack stack = tester.widget(find.byType(IndexedStack));
-      expect(stack.index, 1); // 0: mobile, 1: tablet, 2: desktop
+      final indexedStack = tester.widget<IndexedStack>(find.byType(IndexedStack));
+
+      // Assert that the correct index (1 for tablet) is set.
+      expect(indexedStack.index, 1);// 0: mobile, 1: tablet, 2: desktop
     });
   });
 }

@@ -4,83 +4,85 @@ import 'package:fit_ui/fit_ui.dart';
 
 void main() {
   group('ResponsiveSlots', () {
-    testWidgets('should use Row layout for desktop screens', (tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Center(
-            child: SizedBox(
-              width: 1200, // Desktop width
-              child: ResponsiveSlots(
-                header: (screenType) => const Text('Header'),
-                body: (screenType) => const Text('Body'),
-                side: (screenType) => const Text('Side'),
-              ),
-            ),
+    Widget buildTestableWidget({double? desktopSpacing, double? tabletSpacing}) {
+      return MaterialApp(
+        home: Scaffold(
+          body: ResponsiveSlots(
+            desktopSideSpacing: desktopSpacing ?? 16.0,
+            tabletSideSpacing: tabletSpacing ?? 12.0,
+            header: (screenType) => const Text('Header'),
+            body: (screenType) => const Text('Body'),
+            side: (screenType) => const Text('Side'),
           ),
         ),
       );
+    }
+
+    // desktop
+    testWidgets('should use Row layout for desktop screens', (tester) async {
+      tester.view.devicePixelRatio = 1.0;
+      tester.view.physicalSize = const Size(1200, 900);
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+
+      await tester.pumpWidget(buildTestableWidget());
+      await tester.pumpAndSettle();
 
       expect(find.byType(Row), findsOneWidget);
     });
 
-    testWidgets('should use Column layout for mobile/tablet screens', (tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Center(
-            child: SizedBox(
-              width: 800, // Tablet width
-              child: ResponsiveSlots(
-                header: (screenType) => const Text('Header'),
-                body: (screenType) => const Text('Body'),
-                side: (screenType) => const Text('Side'),
-              ),
-            ),
-          ),
-        ),
-      );
+    testWidgets('should use Column layout for tablet screens', (tester) async {
+      tester.view.devicePixelRatio = 1.0;
+      tester.view.physicalSize = const Size(800, 1200);
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
 
-      expect(find.byType(Column), findsOneWidget);
+      await tester.pumpWidget(buildTestableWidget());
+      await tester.pumpAndSettle();
+
+      final columnFinder = find.byWidgetPredicate(
+            (widget) => widget is Column && widget.children.any((child) => child is Expanded),
+      );
+      expect(columnFinder, findsOneWidget);
+      expect(find.byType(Row), findsNothing);
     });
 
     testWidgets('should apply custom spacing when provided', (tester) async {
-      // 1. Test custom desktop spacing
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Center(
-            child: SizedBox(
-              width: 1200, // Desktop width
-              child: ResponsiveSlots(
-                desktopSideSpacing: 24.0, // Custom value
-                header: (screenType) => const Text('Header'),
-                body: (screenType) => const Text('Body'),
-                side: (screenType) => const Text('Side'),
-              ),
-            ),
-          ),
-        ),
-      );
+      tester.view.devicePixelRatio = 1.0;
+      tester.view.physicalSize = const Size(1200, 900);
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
 
-      final desktopSpacer = tester.widget<SizedBox>(find.byType(SizedBox));
-      expect(desktopSpacer.width, 24.0);
+      await tester.pumpWidget(buildTestableWidget(desktopSpacing: 24.0));
+      await tester.pumpAndSettle();
 
-      // 2. Test custom tablet spacing
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Center(
-            child: SizedBox(
-              width: 800, // Tablet width
-              child: ResponsiveSlots(
-                tabletSideSpacing: 18.0, // Custom value
-                header: (screenType) => const Text('Header'),
-                body: (screenType) => const Text('Body'),
-                side: (screenType) => const Text('Side'),
-              ),
-            ),
-          ),
-        ),
-      );
+      final row = tester.widget<Row>(find.byType(Row));
+      final spacer = row.children.firstWhere((w) => w is SizedBox) as SizedBox;
+      expect(spacer.width, 24.0);
 
-      final tabletSpacer = tester.widget<SizedBox>(find.byType(SizedBox));
+      // tablet
+      tester.view.devicePixelRatio = 1.0;
+      tester.view.physicalSize = const Size(800, 1200);
+      tester.view.resetPhysicalSize();
+      tester.view.resetDevicePixelRatio();
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+
+      await tester.pumpWidget(buildTestableWidget(tabletSpacing: 18.0));
+      await tester.pumpAndSettle();
+
+      final column = tester.widget<Column>(find.byWidgetPredicate(
+            (widget) => widget is Column && widget.children.any((child) => child is Expanded),
+      ));
+      final tabletSpacer = column.children.firstWhere((w) => w is SizedBox) as SizedBox;
       expect(tabletSpacer.height, 18.0);
     });
   });

@@ -57,10 +57,13 @@ class ResponsiveValue<T> {
   /// Creates a new [ResponsiveValue] whose values are created by applying
   /// a transformation function ([mapper]) to each value of this [ResponsiveValue].
   ResponsiveValue<R> map<R>(R Function(T value) mapper) {
+    final localTablet = tablet;
+    final localDesktop = desktop;
+
     return ResponsiveValue<R>(
       mapper(mobile),
-      tablet: tablet != null ? mapper(tablet!) : null,
-      desktop: desktop != null ? mapper(desktop!) : null,
+      tablet: localTablet!= null? mapper(localTablet) : null,
+      desktop: localDesktop!= null? mapper(localDesktop) : null,
     );
   }
 
