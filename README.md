@@ -8,8 +8,6 @@ A **powerful, intuitive, and flexible Flutter package** for creating responsive 
 
 ---
 
-[!(https://github.com/mehrdadmoradi001/fit_ui/blob/main/assets/ecammercegif.gif?raw=true)](https'://github.com/mehrdadmoradi001/fit_ui/blob/main/example/lib/examples/ecommerce/product_page.dart')
-
 ## ✨ Features
 
 - 📏 **Component-Level Responsiveness** – adapts to local layout constraints, not just the screen size.
@@ -21,17 +19,7 @@ A **powerful, intuitive, and flexible Flutter package** for creating responsive 
 
 ---
 
-<div style="text-align: center">
-    <table>
-        <tr>
-            <td style="text-align: center">
-                <a href="https://github.com/mehrdadmoradi001/fit_ui/blob/main/example/lib/examples/ecommerce/product_page.dart">
-                    <img src="https://github.com/mehrdadmoradi001/fit_ui/blob/main/assets/ecammercegif.gif" alt=""/>
-                </a>
-            </td>            
-        </tr>
-    </table>
-</div>
+[![ecommerce](https://github.com/mehrdadmoradi001/fit_ui/blob/main/assets/ecammercegif.gif?raw=true)](https://github.com/mehrdadmoradi001/fit_ui/blob/main/example/lib/examples/ecommerce/product_page.dart)
 
 ## 🚀 Getting Started
 
