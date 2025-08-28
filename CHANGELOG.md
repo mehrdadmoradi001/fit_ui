@@ -1,3 +1,6 @@
+## 1.0.4
+* Documentation: Added an API Quick Reference section to the README.md for better usability and clarity.
+
 ## 1.0.3
 * Updated the demonstration GIF in the README.md for better clarity and performance.
 

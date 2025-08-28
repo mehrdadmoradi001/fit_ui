@@ -30,7 +30,7 @@ A **powerful, intuitive, and flexible Flutter package** for creating responsive 
         </tr>
     </table>
 </div>
-
+<br>
 
 ## 🚀 Getting Started
 
@@ -40,7 +40,7 @@ Add `fit_ui` to your `pubspec.yaml` dependencies:
 
 ```bash
 dependencies:
-  fit_ui: ^1.0.3 # Use the latest version
+  fit_ui: ^1.0.4 # Use the latest version
 ```
 Then, run the following command in your terminal:
 ```yaml
@@ -49,7 +49,54 @@ flutter pub get
 Now you can import the package in your Dart code:
 ```dart
 import 'package:fit_ui/fit_ui.dart';
+
 ```
+<br>
+
+##  📖 API Quick Refrence
+
+Here's a quick overview of the core components in `fit_ui` - designed for **component-level responsive UIs**.
+
+## Core Concepts
+
+| Concept                | Description                                                                       | Default Values               |
+|------------------------|-----------------------------------------------------------------------------------|------------------------------|
+| **AppBreakpoints**     | Defines the width thresholds for switching between screen types                   | `mobile: 600`, `tablet: 950` |
+| **DeviceScreenType**   | An enum representing the current screen type: `.mobile`, `.tablet`, or `.desktop` | -                            |
+| **BreakpointProvider** | An interface to provide your own custom breakpoint logic                          | `DefaultBreakpointProvider`  |
+
+## Main Widgets
+
+| Widget                      | Purpose                                                                                                          |
+|-----------------------------|------------------------------------------------------------------------------------------------------------------|
+| **ResponsiveLayout**        | Selects a layout based on available screen width. Uses LayoutBuilder internally for local constraints awareness. |
+| **ResponsiveLayoutBuilder** | Provides both `DeviceScreenType` and `BoxConstraints` to builder function for highly custom layouts.             |
+| **ResponsiveSlots**         | A slot-based system (header, body, side) that automatically rearranges content based on screen size.             |
+| **AdaptiveIndexedStack**    | Maintains state of multiple screen variants and switches between them based on screen type.                      |
+
+## Core Classes & Extensions
+
+| API                           | Description                                                                      |
+|-------------------------------|----------------------------------------------------------------------------------|
+| **ResponsiveValue\<T>**       | Holds different values for each screen type with intelligent fallback mechanism. |
+| **BoxConstraints.value()**    | Extension method to resolve ResponsiveValue based on local constraints.          |
+| **BoxConstraints.screenType** | Extension property to get DeviceScreenType from constraints.                     |
+<br>
+
+## Key Extension Methods
+```dart
+// Get screen type from constraints
+final screenType = constraints.screenType;
+
+// Resolve responsive values
+final padding = constraints.value(ResponsiveValue(16.0, tablet: 24.0));
+final columns = constraints.value(ResponsiveValue(2, tablet: 4, desktop: 6));
+
+// Use custom breakpoint provider
+final customScreenType = constraints.screenTypeUsing(MyCustomBreakpoints());
+
+```
+<br>
 
 ## 📖 Usage
 
@@ -353,6 +400,12 @@ If you have any questions or need help:
 - Check the [API documentation](https://pub.dev/documentation/fit_ui/latest/)
 - Look at the [example app](https://github.com/mehrdadmoradi001/fit_ui/tree/main/example)
 - [Open an issue](https://github.com/mehrdadmoradi001/fit_ui/issues) for bugs or feature requests
+
+##
+
+### 🧑‍💻 Maintainers
+
+- [MehrdadMoradiNazif](https://github.com/mehrdadmoradi001)
 
 ##
 
