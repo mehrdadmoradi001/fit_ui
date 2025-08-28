@@ -62,12 +62,29 @@ fit_ui/
 │   └── box_constraints_ext_test.dart
 
 ├── example/
-
-│   └── ...
+|   |-- lib
+|   |   |-- examples
+|   |   |   '-- ecommerce
+|   |   |       |-- product_model.dart
+|   |   |       '-- product_page.dart
+|   |   '-- main.dart
+|   |-- pubspec.yaml
+|   '-- web
+|       |-- favicon.png
+|       |-- icons
+|       |-- index.html
+|       |-- analysis_options.yaml
+|       '-- manifest.json 
 
 ├── ARCHITECTURE.md
 
+├── CHANGELOG.md
+
 ├── CONTRIBUTING.md
+
+├── LICENSE
+
+├── pubspec.yaml
 
 └── README.md
 
