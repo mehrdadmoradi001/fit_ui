@@ -19,8 +19,18 @@ A **powerful, intuitive, and flexible Flutter package** for creating responsive 
 
 ---
 
-[![ecommerce](https://github.com/mehrdadmoradi001/fit_ui/blob/main/assets/ecammercegif.gif?raw=true)](https://github.com/mehrdadmoradi001/fit_ui/blob/main/example/lib/examples/ecommerce/product_page.dart)
-[![ecommerce](https://raw.githubusercontent.com/mehrdadmoradi001/fit_ui/main/assets/ecammercegif.gif)](https://github.com/mehrdadmoradi001/fit_ui/blob/main/example/lib/examples/ecommerce/product_page.dart)
+<div style="text-align: center">
+    <table>
+        <tr>
+            <td style="text-align: center">
+                <a href="https://github.com/mehrdadmoradi001/fit_ui/blob/main/example/lib/examples/ecommerce/product_page.dart">
+                    <img src="https://raw.githubusercontent.com/mehrdadmoradi001/fit_ui/main/assets/ecammercegif.gif" alt="responsive example"/>
+                </a>
+            </td>            
+        </tr>
+    </table>
+</div>
+
 
 ## 🚀 Getting Started
 
@@ -30,7 +40,7 @@ Add `fit_ui` to your `pubspec.yaml` dependencies:
 
 ```bash
 dependencies:
-  fit_ui: ^1.0.2 # Use the latest version
+  fit_ui: ^1.0.3 # Use the latest version
 ```
 Then, run the following command in your terminal:
 ```yaml

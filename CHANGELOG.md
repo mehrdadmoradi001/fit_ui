@@ -1,3 +1,6 @@
+## 1.0.3
+* Updated the demonstration GIF in the README.md for better clarity and performance.
+
 ## 1.0.2
 * Updated the demonstration GIF in the README.md for better clarity and performance.
 
