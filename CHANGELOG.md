@@ -1,3 +1,8 @@
+## 1.0.1
+Fixed a broken link in the README file.
+
+Corrected the GIF URL to display properly on pub.dev.
+
 ## 1.0.0
 * Initial stable release of the `fit_ui` package.
 
