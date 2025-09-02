@@ -23,7 +23,8 @@ void main() {
       expect(responsiveValue.resolve(DeviceScreenType.tablet), 10);
     });
 
-    test('should fallback to tablet then mobile when desktop value is null', () {
+    test('should fallback to tablet then mobile when desktop value is null',
+        () {
       const responsiveValue = ResponsiveValue<int>(10, tablet: 20);
       expect(responsiveValue.resolve(DeviceScreenType.desktop), 20);
     });

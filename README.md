@@ -40,7 +40,7 @@ Add `fit_ui` to your `pubspec.yaml` dependencies:
 
 ```bash
 dependencies:
-  fit_ui: ^1.0.4 # Use the latest version
+  fit_ui: ^1.0.5 # Use the latest version
 ```
 Then, run the following command in your terminal:
 ```yaml

@@ -47,9 +47,9 @@ extension ResponsiveConstraints on BoxConstraints {
 
   /// Resolves a [ResponsiveValue<T>] using a custom [BreakpointProvider].
   T valueWith<T>(
-      ResponsiveValue<T> responsiveValue,
-      BreakpointProvider provider,
-      ) {
+    ResponsiveValue<T> responsiveValue,
+    BreakpointProvider provider,
+  ) {
     return responsiveValue.resolve(screenTypeUsing(provider));
   }
 }

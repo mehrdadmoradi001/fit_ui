@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fit_ui/fit_ui.dart';
 import 'product_model.dart';
 
-
 class ProductPage extends StatelessWidget {
   final Product product;
 
@@ -54,8 +53,9 @@ class _MobileTabletLayout extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: _ProductContent(
-                product: product,
-              isDesktopLayout: false,),
+              product: product,
+              isDesktopLayout: false,
+            ),
           ),
         ],
       ),
@@ -129,16 +129,19 @@ class _MobileImageGrid extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(
                           constraints.value(
-                            const ResponsiveValue(8.0, tablet: 10.0, desktop: 12.0),
+                            const ResponsiveValue(8.0,
+                                tablet: 10.0, desktop: 12.0),
                           ),
                         ),
                         child: Image.network(
                           'https://picsum.photos/id/${1060 + index}/200/200',
                           width: constraints.value(
-                            const ResponsiveValue(100.0, tablet: 120.0, desktop: 150.0),
+                            const ResponsiveValue(100.0,
+                                tablet: 120.0, desktop: 150.0),
                           ),
                           height: constraints.value(
-                            const ResponsiveValue(100.0, tablet: 120.0, desktop: 150.0),
+                            const ResponsiveValue(100.0,
+                                tablet: 120.0, desktop: 150.0),
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -210,7 +213,8 @@ class _DesktopLayout extends StatelessWidget {
               child: SingleChildScrollView(
                 child: _ProductContent(
                   product: product,
-                  isDesktopLayout: true,),
+                  isDesktopLayout: true,
+                ),
               ),
             ),
           ],
@@ -237,7 +241,8 @@ class _DesktopImageGrid extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             image: DecorationImage(
-              image: NetworkImage('https://picsum.photos/id/${1060 + index}/200/200'),
+              image: NetworkImage(
+                  'https://picsum.photos/id/${1060 + index}/200/200'),
               fit: BoxFit.cover,
             ),
           ),
@@ -253,7 +258,8 @@ class _ProductContent extends StatelessWidget {
 
   const _ProductContent({
     required this.product,
-    this.isDesktopLayout = false,});
+    this.isDesktopLayout = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -309,11 +315,15 @@ class _ProductContent extends StatelessWidget {
     return Row(
       children: [
         Wrap(
-          children: List.generate(5, (index) => Icon(
-            Icons.star,
-            color: index < product.rating.floor() ? Colors.amber : Colors.grey,
-            size: 16,
-          )),
+          children: List.generate(
+              5,
+              (index) => Icon(
+                    Icons.star,
+                    color: index < product.rating.floor()
+                        ? Colors.amber
+                        : Colors.grey,
+                    size: 16,
+                  )),
         ),
         const SizedBox(width: 8),
         Text(
@@ -485,21 +495,21 @@ class _SpecItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 120,
-              child: Text(
-                title,
-                style: const TextStyle(fontWeight: FontWeight.w500),
-              ),
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 120,
+            child: Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.w500),
             ),
-            const SizedBox(width: 16),
-            Expanded(child: Text(value)),
-          ],
-        ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(child: Text(value)),
+        ],
+      ),
     );
   }
 }

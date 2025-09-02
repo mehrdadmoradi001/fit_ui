@@ -4,7 +4,8 @@ import 'package:fit_ui/fit_ui.dart';
 
 void main() {
   group('ResponsiveSlots', () {
-    Widget buildTestableWidget({double? desktopSpacing, double? tabletSpacing}) {
+    Widget buildTestableWidget(
+        {double? desktopSpacing, double? tabletSpacing}) {
       return MaterialApp(
         home: Scaffold(
           body: ResponsiveSlots(
@@ -45,7 +46,9 @@ void main() {
       await tester.pumpAndSettle();
 
       final columnFinder = find.byWidgetPredicate(
-            (widget) => widget is Column && widget.children.any((child) => child is Expanded),
+        (widget) =>
+            widget is Column &&
+            widget.children.any((child) => child is Expanded),
       );
       expect(columnFinder, findsOneWidget);
       expect(find.byType(Row), findsNothing);
@@ -80,9 +83,12 @@ void main() {
       await tester.pumpAndSettle();
 
       final column = tester.widget<Column>(find.byWidgetPredicate(
-            (widget) => widget is Column && widget.children.any((child) => child is Expanded),
+        (widget) =>
+            widget is Column &&
+            widget.children.any((child) => child is Expanded),
       ));
-      final tabletSpacer = column.children.firstWhere((w) => w is SizedBox) as SizedBox;
+      final tabletSpacer =
+          column.children.firstWhere((w) => w is SizedBox) as SizedBox;
       expect(tabletSpacer.height, 18.0);
     });
   });

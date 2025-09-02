@@ -1,3 +1,6 @@
+## 1.0.5
+* Housekeeping: Formatted entire codebase with dart format. to ensure consistent style and improve maintainability.
+
 ## 1.0.4
 * Documentation: Added an API Quick Reference section to the README.md for better usability and clarity.
 

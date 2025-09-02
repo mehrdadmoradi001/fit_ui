@@ -4,7 +4,8 @@ import 'package:fit_ui/fit_ui.dart';
 
 void main() {
   group('AdaptiveIndexedStack', () {
-    testWidgets('should show correct index based on screen size', (tester) async {
+    testWidgets('should show correct index based on screen size',
+        (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Center(
@@ -21,10 +22,11 @@ void main() {
       );
 
       // Check that the Tablet widget is the one being displayed.
-      final indexedStack = tester.widget<IndexedStack>(find.byType(IndexedStack));
+      final indexedStack =
+          tester.widget<IndexedStack>(find.byType(IndexedStack));
 
       // Assert that the correct index (1 for tablet) is set.
-      expect(indexedStack.index, 1);// 0: mobile, 1: tablet, 2: desktop
+      expect(indexedStack.index, 1); // 0: mobile, 1: tablet, 2: desktop
     });
   });
 }

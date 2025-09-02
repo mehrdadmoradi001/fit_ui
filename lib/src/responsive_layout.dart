@@ -47,7 +47,8 @@ class ResponsiveLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final provider = breakpointProvider?? const DefaultBreakpointProvider();
+        final provider =
+            breakpointProvider ?? const DefaultBreakpointProvider();
         final screenType = provider.getScreenType(constraints.maxWidth);
 
         switch (screenType) {

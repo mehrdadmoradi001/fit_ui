@@ -26,7 +26,8 @@ const sampleProduct = Product(
   price: '\$299.99',
   oldPrice: '\$399.99',
   discount: '25% OFF',
-  description: 'A stunning piece of modern art and functionality. This geometric lamp provides warm, ambient lighting, perfect for any contemporary living space. Crafted with precision from high-quality materials, it features an energy-efficient LED system with adjustable brightness settings.',
+  description:
+      'A stunning piece of modern art and functionality. This geometric lamp provides warm, ambient lighting, perfect for any contemporary living space. Crafted with precision from high-quality materials, it features an energy-efficient LED system with adjustable brightness settings.',
   imageUrl: 'https://picsum.photos/id/1060/800/600',
   rating: 4.8,
   reviewCount: 142,

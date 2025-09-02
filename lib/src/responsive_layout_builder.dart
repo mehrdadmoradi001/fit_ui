@@ -4,7 +4,8 @@ import 'breakpoints.dart';
 import 'device_screen_type.dart';
 
 /// A builder-driven responsive layout primitive (no context required to determine type).
-typedef ScreenTypeWidgetBuilder = Widget Function(DeviceScreenType screenType, BoxConstraints constraints);
+typedef ScreenTypeWidgetBuilder = Widget Function(
+    DeviceScreenType screenType, BoxConstraints constraints);
 
 /// {@template responsive_ui.responsive_layout_builder}
 /// A widget that builds itself based on the current screen type and constraints.

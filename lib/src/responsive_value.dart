@@ -62,11 +62,12 @@ class ResponsiveValue<T> {
 
     return ResponsiveValue<R>(
       mapper(mobile),
-      tablet: localTablet!= null? mapper(localTablet) : null,
-      desktop: localDesktop!= null? mapper(localDesktop) : null,
+      tablet: localTablet != null ? mapper(localTablet) : null,
+      desktop: localDesktop != null ? mapper(localDesktop) : null,
     );
   }
 
   @override
-  String toString() => 'ResponsiveValue(mobile: $mobile, tablet: $tablet, desktop: $desktop)';
+  String toString() =>
+      'ResponsiveValue(mobile: $mobile, tablet: $tablet, desktop: $desktop)';
 }

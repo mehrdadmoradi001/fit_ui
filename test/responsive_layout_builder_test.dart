@@ -4,7 +4,8 @@ import 'package:fit_ui/fit_ui.dart';
 
 void main() {
   group('ResponsiveLayoutBuilder', () {
-    testWidgets('should provide correct screen type to builder', (tester) async {
+    testWidgets('should provide correct screen type to builder',
+        (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Center(

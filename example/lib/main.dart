@@ -55,15 +55,13 @@ class HomePage extends StatelessWidget {
             leading: const Icon(Icons.dashboard),
             title: const Text('Dashboard Example'),
             subtitle: const Text('Coming soon...'),
-            onTap: () {
-            },
+            onTap: () {},
           ),
           ListTile(
             leading: const Icon(Icons.chat),
             title: const Text('Chat App Example'),
             subtitle: const Text('Coming soon...'),
-            onTap: () {
-            },
+            onTap: () {},
           ),
         ],
       ),
